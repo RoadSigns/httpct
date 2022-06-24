@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	commands.ScanSecurityHeaders(os.Args)
+	os.Exit(commands.ScanSecurityHeaders(os.Args))
 }
