@@ -1,6 +1,11 @@
 package services
 
-func GenerateHttpHeaderHeaderScanResults(url string, headers Headers, securityHeaders []SecurityHeader) HttpHeaderScanResults {
+import (
+	"github.com/roadsigns/http-header-scanner/services/securityheaderscanner"
+	"sort"
+)
+
+func GenerateHttpHeaderHeaderScanResults(url string, headers Headers, securityHeaders []securityheaderscanner.SecurityHeader) HttpHeaderScanResults {
 	factory := HttpHeaderScanResultFactory{
 		Url:             url,
 		Headers:         headers,
@@ -13,7 +18,7 @@ func GenerateHttpHeaderHeaderScanResults(url string, headers Headers, securityHe
 type HttpHeaderScanResultFactory struct {
 	Url             string
 	Headers         Headers
-	SecurityHeaders []SecurityHeader
+	SecurityHeaders []securityheaderscanner.SecurityHeader
 }
 
 func (factory HttpHeaderScanResultFactory) generate() HttpHeaderScanResults {
@@ -26,17 +31,21 @@ func (factory HttpHeaderScanResultFactory) generate() HttpHeaderScanResults {
 		})
 	}
 
+	sort.Strings(rawHeaders)
+
 	// Get the Missing and Additional Information Security Headers
 	var missingHeaders []MissingHeader
 	var additionalInformationHeaders []AdditionalInformationHeader
 
 	for _, header := range factory.SecurityHeaders {
-		if header.Exists {
+		if header.Exists && header.Valid {
 			additionalInformationHeaders = append(additionalInformationHeaders, AdditionalInformationHeader{
 				Title:   header.Title,
 				Exists:  header.Exists,
 				Content: header.Content,
 				Reason:  header.Reason,
+				Valid:   header.Valid,
+				Guide:   header.Guide,
 			})
 			continue
 		}
@@ -46,6 +55,8 @@ func (factory HttpHeaderScanResultFactory) generate() HttpHeaderScanResults {
 			Exists:  header.Exists,
 			Content: header.Content,
 			Reason:  header.Reason,
+			Valid:   header.Valid,
+			Guide:   header.Guide,
 		})
 	}
 

@@ -1,6 +1,8 @@
 package services
 
-import "net/http"
+import (
+	"net/http"
+)
 
 func GetHttpHeaders(url string) Headers {
 	resp, err := http.Get(url)

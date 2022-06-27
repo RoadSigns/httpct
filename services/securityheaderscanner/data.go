@@ -1,6 +1,15 @@
-package services
+package securityheaderscanner
 
 import "strings"
+
+type SecurityHeader struct {
+	Title   string
+	Exists  bool
+	Content string
+	Reason  string
+	Valid   bool
+	Guide   string
+}
 
 type Header struct {
 	Title   string
@@ -34,34 +43,4 @@ func (headers *Headers) AddHeader(header Header) {
 	}
 
 	headers.headers[strings.ToLower(header.Title)] = header
-}
-
-type HttpHeaderScanResults struct {
-	Url                         string
-	RawHeaders                  []RawHeader
-	MissingHeaders              []MissingHeader
-	AdditionalInformationHeader []AdditionalInformationHeader
-}
-
-type RawHeader struct {
-	Title   string
-	Content string
-}
-
-type MissingHeader struct {
-	Title   string
-	Exists  bool
-	Content string
-	Reason  string
-	Valid   bool
-	Guide   string
-}
-
-type AdditionalInformationHeader struct {
-	Title   string
-	Exists  bool
-	Content string
-	Reason  string
-	Valid   bool
-	Guide   string
 }
