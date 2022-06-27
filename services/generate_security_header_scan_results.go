@@ -2,7 +2,6 @@ package services
 
 import (
 	"github.com/roadsigns/http-header-scanner/services/securityheaderscanner"
-	"sort"
 )
 
 func GenerateHttpHeaderHeaderScanResults(url string, headers Headers, securityHeaders []securityheaderscanner.SecurityHeader) HttpHeaderScanResults {
@@ -30,8 +29,6 @@ func (factory HttpHeaderScanResultFactory) generate() HttpHeaderScanResults {
 			Content: header.Content,
 		})
 	}
-
-	sort.Strings(rawHeaders)
 
 	// Get the Missing and Additional Information Security Headers
 	var missingHeaders []MissingHeader
