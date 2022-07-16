@@ -1,7 +1,6 @@
 package securityheaderscanner
 
 func checkForXFrameOptions(headers Headers) SecurityHeader {
-	// Check if the Header Exists
 	securityHeader := SecurityHeader{
 		Title:   "X-Frame-Options",
 		Exists:  false,
