@@ -28,9 +28,9 @@ func (tableGenerator CommandLineTableGenerator) OutputRawHttpHeaderTable(headers
 func (tableGenerator CommandLineTableGenerator) OutputMissingHeaderTable(headers []MissingHeader) {
 	t := table.NewWriter()
 	t.SetOutputMirror(os.Stdout)
-	t.AppendHeader(table.Row{"Http Header", "Reason"})
+	t.AppendHeader(table.Row{"Http Header", "Reason", "Guide"})
 	for _, header := range headers {
-		t.AppendRow([]interface{}{header.Title, header.Reason})
+		t.AppendRow([]interface{}{header.Title, header.Reason, header.Guide})
 		t.AppendSeparator()
 	}
 	t.Render()
