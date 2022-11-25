@@ -7,5 +7,6 @@ func Scan(headers Headers) []SecurityHeader {
 	securityHeaders = append(securityHeaders, checkForXXssProtection(headers))
 	securityHeaders = append(securityHeaders, checkForContentSecurityPolicy(headers))
 	securityHeaders = append(securityHeaders, checkForStrictTransportSecurity(headers))
+	securityHeaders = append(securityHeaders, checkForPermissionsPolicy(headers))
 	return securityHeaders
 }
