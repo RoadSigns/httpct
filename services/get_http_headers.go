@@ -5,7 +5,7 @@ import (
 )
 
 func GetHttpHeaders(url string) Headers {
-	resp, err := http.Get(url)
+	resp, err := http.Head(url)
 	if err != nil {
 		panic(err.Error())
 	}
