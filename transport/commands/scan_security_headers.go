@@ -4,19 +4,19 @@ import (
 	"fmt"
 	"github.com/common-nighthawk/go-figure"
 	"github.com/fatih/color"
-	"github.com/roadsigns/http-header-scanner/actions"
-	"github.com/roadsigns/http-header-scanner/services"
+	"github.com/roadsigns/httpct/actions"
+	"github.com/roadsigns/httpct/services"
 	"time"
 )
 
 func ScanSecurityHeaders(args []string) int {
-	if len(args) == 1 {
+	if len(args) < 1 {
 		// Needs to be changed to a nice format message
 		panic("Domain argument must be provided")
 	}
 
 	domain := actions.GetHttpSecurityHeadersData{
-		Domain: args[1],
+		Domain: args[0],
 	}
 
 	if ok, err := domain.ValidatedUrl(); !ok {

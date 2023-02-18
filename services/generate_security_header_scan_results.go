@@ -1,7 +1,7 @@
 package services
 
 import (
-	"github.com/roadsigns/http-header-scanner/services/securityheaderscanner"
+	"github.com/roadsigns/httpct/services/securityheaderscanner"
 )
 
 func GenerateHttpHeaderHeaderScanResults(url string, headers Headers, securityHeaders []securityheaderscanner.SecurityHeader) HttpHeaderScanResults {

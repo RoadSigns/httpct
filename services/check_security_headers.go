@@ -1,6 +1,6 @@
 package services
 
-import "github.com/roadsigns/http-header-scanner/services/securityheaderscanner"
+import "github.com/roadsigns/httpct/services/securityheaderscanner"
 
 func CheckSecurityHeaders(headers Headers) []securityheaderscanner.SecurityHeader {
 	var scannerHeaders securityheaderscanner.Headers

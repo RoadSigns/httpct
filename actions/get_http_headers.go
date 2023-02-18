@@ -1,7 +1,7 @@
 package actions
 
 import (
-	"github.com/roadsigns/http-header-scanner/services"
+	"github.com/roadsigns/httpct/services"
 )
 
 func CheckSecurityHttpHeaders(data GetHttpSecurityHeadersData) services.HttpHeaderScanResults {

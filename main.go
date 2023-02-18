@@ -1,8 +1,7 @@
 package main
 
 import (
-	"github.com/roadsigns/http-header-scanner/transport/commands"
-	"os"
+	"github.com/roadsigns/httpct/cmd/httpct"
 )
 
 func main() {
