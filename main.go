@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	os.Exit(commands.ScanSecurityHeaders(os.Args))
+	httpct.Execute()
 }
