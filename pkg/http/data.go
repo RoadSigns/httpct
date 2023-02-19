@@ -1,15 +1,6 @@
-package securityheaderscanner
+package http
 
 import "strings"
-
-type SecurityHeader struct {
-	Title   string
-	Exists  bool
-	Content string
-	Reason  string
-	Valid   bool
-	Guide   string
-}
 
 type Header struct {
 	Title   string
@@ -20,7 +11,7 @@ type Headers struct {
 	headers map[string]Header
 }
 
-func (headers Headers) Exists(key string) bool {
+func (headers *Headers) Exists(key string) bool {
 	key = strings.ToLower(key)
 	if _, ok := headers.headers[key]; ok {
 		return true
@@ -29,7 +20,7 @@ func (headers Headers) Exists(key string) bool {
 	return false
 }
 
-func (headers Headers) GetContent(key string) string {
+func (headers *Headers) GetContent(key string) string {
 	key = strings.ToLower(key)
 	if headers.Exists(key) {
 		return headers.headers[key].Content
@@ -43,4 +34,8 @@ func (headers *Headers) AddHeader(header Header) {
 	}
 
 	headers.headers[strings.ToLower(header.Title)] = header
+}
+
+func (headers *Headers) Headers() map[string]Header {
+	return headers.headers
 }

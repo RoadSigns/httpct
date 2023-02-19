@@ -3,9 +3,9 @@ package scan
 import (
 	"fmt"
 	"github.com/fatih/color"
-	"github.com/roadsigns/httpct/actions"
-	"github.com/roadsigns/httpct/services/formatter"
-	"github.com/roadsigns/httpct/services/writer"
+	"github.com/roadsigns/httpct/pkg/actions"
+	"github.com/roadsigns/httpct/pkg/formatter"
+	"github.com/roadsigns/httpct/pkg/writer"
 )
 
 func SecurityHeaders(domainPath string, options Options) int {

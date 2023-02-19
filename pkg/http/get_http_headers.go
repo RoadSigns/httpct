@@ -1,11 +1,11 @@
-package services
+package http
 
 import (
-	"net/http"
+	httpClient "net/http"
 )
 
 func GetHttpHeaders(url string) Headers {
-	resp, err := http.Head(url)
+	resp, err := httpClient.Head(url)
 	if err != nil {
 		panic(err.Error())
 	}

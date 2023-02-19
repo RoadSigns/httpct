@@ -1,6 +1,8 @@
-package securityheaderscanner
+package scanners
 
-func checkForContentSecurityPolicy(headers Headers) SecurityHeader {
+import "github.com/roadsigns/httpct/pkg/http"
+
+func checkForContentSecurityPolicy(headers http.Headers) SecurityHeader {
 	securityHeader := SecurityHeader{
 		Title:   "Content-Security-Policy",
 		Exists:  false,

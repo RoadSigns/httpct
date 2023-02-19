@@ -1,7 +1,8 @@
-package services
+package formatter
 
 import (
 	"github.com/jedib0t/go-pretty/v6/table"
+	"github.com/roadsigns/httpct/pkg/scanners"
 	"io"
 )
 
@@ -15,7 +16,7 @@ type CommandLineTableGenerator struct {
 	Writer io.Writer
 }
 
-func (tableGenerator CommandLineTableGenerator) OutputRawHttpHeaderTable(headers []RawHeader) {
+func (tableGenerator CommandLineTableGenerator) OutputRawHttpHeaderTable(headers []scanners.RawHeader) {
 	t := table.NewWriter()
 	t.SetOutputMirror(tableGenerator.Writer)
 	t.AppendHeader(table.Row{"Http Header", "Content"})
@@ -26,7 +27,7 @@ func (tableGenerator CommandLineTableGenerator) OutputRawHttpHeaderTable(headers
 	t.Render()
 }
 
-func (tableGenerator CommandLineTableGenerator) OutputMissingHeaderTable(headers []MissingHeader) {
+func (tableGenerator CommandLineTableGenerator) OutputMissingHeaderTable(headers []scanners.MissingHeader) {
 	t := table.NewWriter()
 	t.SetOutputMirror(tableGenerator.Writer)
 	t.AppendHeader(table.Row{"Http Header", "Reason", "Guide"})

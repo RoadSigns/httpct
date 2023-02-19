@@ -1,6 +1,8 @@
-package securityheaderscanner
+package scanners
 
-func checkForXXssProtection(headers Headers) SecurityHeader {
+import "github.com/roadsigns/httpct/pkg/http"
+
+func checkForXXssProtection(headers http.Headers) SecurityHeader {
 	securityHeader := SecurityHeader{
 		Title:   "X-Xss-Protection",
 		Exists:  false,

@@ -1,12 +1,12 @@
 package formatter
 
 import (
-	"github.com/roadsigns/httpct/services"
+	"github.com/roadsigns/httpct/pkg/scanners"
 	"io"
 )
 
 type Formatter interface {
-	Format(results services.HttpHeaderScanResults, writer io.Writer) error
+	Format(results scanners.HttpHeaderScanResults, writer io.Writer) error
 }
 
 type Factory struct {

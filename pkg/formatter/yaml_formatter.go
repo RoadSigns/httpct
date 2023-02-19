@@ -1,7 +1,7 @@
 package formatter
 
 import (
-	"github.com/roadsigns/httpct/services"
+	"github.com/roadsigns/httpct/pkg/scanners"
 	"gopkg.in/yaml.v3"
 	"io"
 )
@@ -12,7 +12,7 @@ const YmlFormatterType = "yml"
 type YamlFormatter struct {
 }
 
-func (y YamlFormatter) Format(results services.HttpHeaderScanResults, writer io.Writer) error {
+func (y YamlFormatter) Format(results scanners.HttpHeaderScanResults, writer io.Writer) error {
 	result, err := yaml.Marshal(results)
 	if err != nil {
 		return err
