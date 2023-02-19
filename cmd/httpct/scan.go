@@ -16,6 +16,7 @@ var scanCmd = &cobra.Command{
 		options := scan.Options{
 			Cli:    getCliOption(cmd),
 			Format: getFormatOption(cmd),
+			Output: getOutputOption(cmd),
 		}
 
 		domain := args[len(args)-1]
@@ -43,8 +44,18 @@ func getFormatOption(cmd *cobra.Command) string {
 	return format
 }
 
+func getOutputOption(cmd *cobra.Command) string {
+	output := cmd.Flag("output").Value.String()
+	if cmd.Flag("output").Value.String() != "" {
+		return output
+	}
+
+	return ""
+}
+
 func init() {
 	rootCmd.AddCommand(scanCmd)
 	scanCmd.Flags().Bool("cli", false, "Returns an error code if any headers are missing")
 	scanCmd.Flags().StringP("format", "f", "cli", "Returns the results in the format requested")
+	scanCmd.Flags().StringP("output", "o", "", "Outputs the file to the location requested")
 }
