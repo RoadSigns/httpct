@@ -17,5 +17,9 @@ func (f Factory) Create(format string) Formatter {
 		return JsonFormatter{}
 	}
 
+	if format == YamlFormatterType || format == YmlFormatterType {
+		return YamlFormatter{}
+	}
+
 	return ConsoleFormatter{}
 }
