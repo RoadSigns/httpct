@@ -1,4 +1,4 @@
-package commands
+package scan
 
 import (
 	"fmt"
@@ -9,9 +9,9 @@ import (
 	"time"
 )
 
-func ScanSecurityHeaders(args []string) int {
+func SecurityHeaders(domainPath string, options Options) int {
 	domain := actions.GetHttpSecurityHeadersData{
-		Domain: args[len(args)-1],
+		Domain: domainPath,
 	}
 
 	if ok, err := domain.ValidatedUrl(); !ok {
@@ -30,6 +30,11 @@ func ScanSecurityHeaders(args []string) int {
 	if len(results.MissingHeaders) > 0 {
 		figure.NewFigure("Missing Security Headers", "", true).Print()
 		tableGenerator.OutputMissingHeaderTable(results.MissingHeaders)
+
+		if options.Cli {
+			return 1
+		}
 	}
+
 	return 0
 }
