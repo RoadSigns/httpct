@@ -2,7 +2,7 @@ package httpct
 
 import (
 	"fmt"
-	scan2 "github.com/roadsigns/httpct/pkg/commands/scan"
+	"github.com/roadsigns/httpct/pkg/commands/scan"
 	"github.com/spf13/cobra"
 	"os"
 )
@@ -13,14 +13,14 @@ var scanCmd = &cobra.Command{
 	Short:   "Scan a URL",
 	Args:    cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		options := scan2.Options{
+		options := scan.Options{
 			Cli:    getCliOption(cmd),
 			Format: getFormatOption(cmd),
 			Output: getOutputOption(cmd),
 		}
 
 		domain := args[len(args)-1]
-		result := scan2.SecurityHeaders(domain, options)
+		result := scan.SecurityHeaders(domain, options)
 		if result != 0 {
 			fmt.Fprintf(os.Stderr, "Erroring due to CLI flag being set and missing headers found")
 			os.Exit(result)
