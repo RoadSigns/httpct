@@ -1,5 +1,7 @@
 package scan
 
 type Options struct {
-	Cli bool
+	Cli    bool
+	Format string
+	Output string
 }

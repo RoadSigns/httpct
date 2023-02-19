@@ -17,4 +17,5 @@ require (
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
