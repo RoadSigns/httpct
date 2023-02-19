@@ -24,7 +24,7 @@ func SecurityHeaders(domainPath string, options Options) int {
 	factory := formatter.Factory{}
 	factory.Create(options.Format).Format(results)
 
-	if options.Cli {
+	if options.Cli && len(results.MissingHeaders) > 0 {
 		return 1
 	}
 	return 0
