@@ -10,13 +10,8 @@ import (
 )
 
 func ScanSecurityHeaders(args []string) int {
-	if len(args) < 1 {
-		// Needs to be changed to a nice format message
-		panic("Domain argument must be provided")
-	}
-
 	domain := actions.GetHttpSecurityHeadersData{
-		Domain: args[0],
+		Domain: args[len(args)-1],
 	}
 
 	if ok, err := domain.ValidatedUrl(); !ok {
@@ -28,7 +23,7 @@ func ScanSecurityHeaders(args []string) int {
 
 	results := actions.CheckSecurityHttpHeaders(domain)
 
-	figure.NewFigure("HTTP Header Scanner", "", true).Print()
+	figure.NewFigure("httpct", "", true).Print()
 	tableGenerator := services.CommandLineTableGenerator{}
 	tableGenerator.OutputGenericInformationTable(domain.Domain, time.Now().Format("15:04:05 01 Jan 2006"))
 	tableGenerator.OutputRawHttpHeaderTable(results.RawHeaders)
