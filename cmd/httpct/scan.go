@@ -2,7 +2,7 @@ package httpct
 
 import (
 	"fmt"
-	"github.com/roadsigns/httpct/transport/commands/scan"
+	"github.com/roadsigns/httpct/pkg/commands/scan"
 	"github.com/spf13/cobra"
 	"os"
 )

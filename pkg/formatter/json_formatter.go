@@ -2,7 +2,7 @@ package formatter
 
 import (
 	"encoding/json"
-	"github.com/roadsigns/httpct/services"
+	"github.com/roadsigns/httpct/pkg/scanners"
 	"io"
 )
 
@@ -11,7 +11,7 @@ const JsonFormatterFlag = "json"
 type JsonFormatter struct {
 }
 
-func (j JsonFormatter) Format(results services.HttpHeaderScanResults, writer io.Writer) error {
+func (j JsonFormatter) Format(results scanners.HttpHeaderScanResults, writer io.Writer) error {
 	json, err := json.MarshalIndent(results, "", "\t")
 	if err != nil {
 		return err

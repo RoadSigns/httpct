@@ -1,10 +1,10 @@
-package services
+package scanners
 
 import (
-	"github.com/roadsigns/httpct/services/securityheaderscanner"
+	"github.com/roadsigns/httpct/pkg/http"
 )
 
-func GenerateHttpHeaderHeaderScanResults(url string, headers Headers, securityHeaders []securityheaderscanner.SecurityHeader) HttpHeaderScanResults {
+func GenerateHttpHeaderHeaderScanResults(url string, headers http.Headers, securityHeaders []SecurityHeader) HttpHeaderScanResults {
 	factory := HttpHeaderScanResultFactory{
 		Url:             url,
 		Headers:         headers,
@@ -16,14 +16,14 @@ func GenerateHttpHeaderHeaderScanResults(url string, headers Headers, securityHe
 
 type HttpHeaderScanResultFactory struct {
 	Url             string
-	Headers         Headers
-	SecurityHeaders []securityheaderscanner.SecurityHeader
+	Headers         http.Headers
+	SecurityHeaders []SecurityHeader
 }
 
 func (factory HttpHeaderScanResultFactory) generate() HttpHeaderScanResults {
 	// Create Raw Title Slice
 	var rawHeaders []RawHeader
-	for _, header := range factory.Headers.headers {
+	for _, header := range factory.Headers.Headers() {
 		rawHeaders = append(rawHeaders, RawHeader{
 			Title:   header.Title,
 			Content: header.Content,

@@ -1,6 +1,8 @@
-package securityheaderscanner
+package scanners
 
-func checkForPermissionsPolicy(headers Headers) SecurityHeader {
+import "github.com/roadsigns/httpct/pkg/http"
+
+func checkForPermissionsPolicy(headers http.Headers) SecurityHeader {
 	securityHeader := SecurityHeader{
 		Title:   "Permissions-Policy",
 		Exists:  false,

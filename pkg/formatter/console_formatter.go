@@ -2,7 +2,7 @@ package formatter
 
 import (
 	"github.com/common-nighthawk/go-figure"
-	"github.com/roadsigns/httpct/services"
+	"github.com/roadsigns/httpct/pkg/scanners"
 	"io"
 	"time"
 )
@@ -12,9 +12,9 @@ const ConsoleFormatterFlag = "console"
 type ConsoleFormatter struct {
 }
 
-func (c ConsoleFormatter) Format(results services.HttpHeaderScanResults, writer io.Writer) error {
+func (c ConsoleFormatter) Format(results scanners.HttpHeaderScanResults, writer io.Writer) error {
 	writer.Write([]byte(figure.NewFigure("httpct", "", true).String()))
-	tableGenerator := services.CommandLineTableGenerator{
+	tableGenerator := CommandLineTableGenerator{
 		Writer: writer,
 	}
 	tableGenerator.OutputGenericInformationTable(results.Url, time.Now().Format("15:04:05 01 Jan 2006"))

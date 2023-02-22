@@ -1,6 +1,15 @@
-package services
+package scanners
 
 import "strings"
+
+type SecurityHeader struct {
+	Title   string
+	Exists  bool
+	Content string
+	Reason  string
+	Valid   bool
+	Guide   string
+}
 
 type Header struct {
 	Title   string
