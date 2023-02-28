@@ -2,7 +2,7 @@ package scanners
 
 import "github.com/roadsigns/httpct/pkg/http"
 
-func checkForXFrameOptions(headers http.Headers) SecurityHeader {
+func XFrameOptions(headers http.Headers) SecurityHeader {
 	securityHeader := SecurityHeader{
 		Title:   "X-Frame-Options",
 		Exists:  false,
