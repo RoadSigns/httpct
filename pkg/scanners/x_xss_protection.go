@@ -2,7 +2,7 @@ package scanners
 
 import "github.com/roadsigns/httpct/pkg/http"
 
-func checkForXXssProtection(headers http.Headers) SecurityHeader {
+func XXssProtection(headers http.Headers) SecurityHeader {
 	securityHeader := SecurityHeader{
 		Title:   "X-Xss-Protection",
 		Exists:  false,
