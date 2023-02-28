@@ -6,7 +6,7 @@ import "github.com/roadsigns/httpct/pkg/http"
 func Scan(headers http.Headers) []SecurityHeader {
 	var securityHeaders []SecurityHeader
 	securityHeaders = append(securityHeaders, checkForXFrameOptions(headers))
-	securityHeaders = append(securityHeaders, checkForXXssProtection(headers))
+	securityHeaders = append(securityHeaders, XXssProtection(headers))
 	securityHeaders = append(securityHeaders, checkForContentSecurityPolicy(headers))
 	securityHeaders = append(securityHeaders, checkForStrictTransportSecurity(headers))
 	securityHeaders = append(securityHeaders, checkForPermissionsPolicy(headers))
