@@ -11,7 +11,7 @@ var rootCmd = &cobra.Command{
 	Short: "httpct - Scanning HTTP Headers",
 	Long:  "httpct - Scanning HTTP Headers",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Hello World")
+		cmd.Help()
 	},
 }
 
